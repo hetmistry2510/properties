@@ -255,11 +255,8 @@
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
     if (storedUser && storedUser.email === email && storedUser.password === password) {
-      // ✅ This line is required!
+      // ✅ Mark user as logged in
       localStorage.setItem("isLoggedIn", "true");
-
-      // Just to be safe, save user again
-      localStorage.setItem("user", JSON.stringify(storedUser));
 
       window.location.href = "dashboard.html";
     } else {
@@ -270,6 +267,29 @@
       }, 3000);
     }
   }
+
+  // ✅ Add logout function
+  function logout() {
+    // Remove login flag and user data if needed
+    localStorage.removeItem("isLoggedIn");
+    // Optionally also remove user data
+    // localStorage.removeItem("user");
+
+    // Redirect to login page
+    window.location.href = "login.html";
+  }
+
+  // ✅ On page load, show user details
+  window.addEventListener("DOMContentLoaded", () => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      document.getElementById("userName").innerText = storedUser.name;
+      document.getElementById("userEmail").innerText = storedUser.email;
+    } else {
+      // If no user is found, redirect to login
+      window.location.href = "login.html";
+    }
+  });
 </script>
 
 </body>
