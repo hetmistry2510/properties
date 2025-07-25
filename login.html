@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - DreamHomes</title>
+ <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f9f9f9, #e9f5ff);
+    color: #222;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* === Header === */
+  header {
+    background: #0055aa;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .logo span {
+    color: #ffd700;
+  }
+
+  /* === Hamburger === */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+    border-radius: 2px;
+  }
+
+  /* === Navigation === */
+  nav {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  nav a {
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover,
+  nav a.active {
+    color: #ffd700;
+  }
+
+  /* === Login Section === */
+  .auth-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f0faff, #e6f0ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 140px);
+  }
+
+  .auth-card {
+    background: white;
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 85, 170, 0.2);
+    text-align: center;
+  }
+
+  .auth-card h2 {
+    margin-bottom: 20px;
+    color: #0055aa;
+  }
+
+  .auth-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .auth-card input {
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+
+  .auth-card input:focus {
+    border-color: #0055aa;
+    outline: none;
+  }
+
+  .auth-card button {
+    background: #ffd700;
+    color: #222;
+    padding: 12px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .auth-card button:hover {
+    background: #ffc107;
+  }
+
+  .auth-card p {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .auth-card a {
+    color: #0055aa;
+    text-decoration: underline;
+  }
+
+  /* === Footer === */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: #004080;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* === Responsive: Mobile Menu === */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+
+    nav {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #0055aa;
+      margin-top: 10px;
+      padding: 5px 0;
+    }
+    nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffd700;
+}
+
+    nav.open {
+      display: flex;
+    }
+
+    nav a {
+      padding: 12px 20px;
+      width: 100%;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav a:last-child {
+      border-bottom: none;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <header>
+    <div class="logo">🏠 Dream<span>Homes</span></div>
+
+    <!-- Hamburger -->
+    <div id="menu-toggle" class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="aboutme.html">About</a>
+      <a href="properties.html">Properties</a>
+      <a href="contect.html">Contact</a>
+      <a href="login.html" class="active">Login</a>
+    </nav>
+  </header>
+
+  <section class="auth-section">
+    <div class="auth-card">
+      <h2>Login to Your Account</h2>
+      <form onsubmit="handleLogin(event)">
+        <input type="email" id="loginEmail" placeholder="Email" required />
+        <input type="password" id="loginPassword" placeholder="Password" required />
+        <button type="submit">Login</button>
+        <p id="error" style="color:red; display:none;">Invalid email or password.</p>
+        <p>Don't have an account? <a href="signup.html">Sign up here</a>.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 DreamHomes. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value;
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+
+      if (storedUser && storedUser.email === email && storedUser.password === password) {
+        window.location.href = "dashboard.html";
+      } else {
+        const errorMsg = document.getElementById("error");
+        errorMsg.style.display = "block";
+        setTimeout(() => {
+          errorMsg.style.display = "none";
+        }, 3000);
+      }
+    }
+
+    // Toggle mobile nav
+    document.getElementById("menu-toggle").addEventListener("click", () => {
+      document.getElementById("navMenu").classList.toggle("open");
+    });
+  </script>
+</body>
+</html>

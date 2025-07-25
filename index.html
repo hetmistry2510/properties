@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DreamHomes - Real Estate</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #e3f2fd;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #0652DD;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #ffdd00;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ffdd00;
+    }
+
+    /* Hamburger menu icon */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    /* Mobile menu */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background-color: #0652DD;
+      width: 100%;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      z-index: 1000;
+      padding: 10px 30px;
+    }
+
+    .mobile-nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      font-weight: bold;
+    }
+
+    .hero {
+      flex: 1;
+      background: linear-gradient(to right, #74b9ff, #a29bfe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 600px;
+      color: white;
+      animation: fadeIn 1s ease;
+    }
+
+    .hero-content h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      font-size: 16px;
+      background-color: #ffdd00;
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s ease;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background-color: #ffd600;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #eeeeee;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+    }
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0652DD;
+    width: 100%;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    z-index: 1000;
+    padding: 10px 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .mobile-nav.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .mobile-nav a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 12px 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .mobile-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffdd00;
+  }
+
+  .hero-content h2 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+}
+
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="logo">🏠 Dream<span>Homes</span></h1>
+
+    <!-- Hamburger icon -->
+    <div class="hamburger" onclick="toggleMobileMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="aboutme.html">About</a>
+      <a href="properties.html">Properties</a>
+      <a href="contect.html">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html">Home</a>
+      <a href="aboutme.html">About</a>
+      <a href="properties.html">Properties</a>
+      <a href="contect.html">Contact</a>
+      <a href="login.html">Login</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Find Your Perfect Place</h2>
+      <p>Buy, rent, or invest in the best properties with confidence.</p>
+      <a href="signup.html" class="btn">Get Started</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 DreamHomes. Built with ❤️ for future homeowners.</p>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileNav');
+      menu.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

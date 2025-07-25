@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - DreamHomes</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f9f9f9, #e9f5ff);
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #0057d9;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #ffdd00;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #ffdd00;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #0057d9;
+        flex-direction: column;
+        align-items: center;
+        padding: 2px 0;
+        margin-top: 5px;
+        z-index: 999;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        padding: 5px 10px;
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    .contact-section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .contact-section p {
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #0057d9;
+    }
+
+    .btn {
+      padding: 12px;
+      background-color: #d7b700;
+      color: white;
+      border: none;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0041a8;
+    }
+
+    footer {
+      background-color: #003b8c;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 class="logo">🏠 Dream<span>Homes</span></h1>
+
+    <!-- Hamburger Icon for Mobile -->
+    <div class="menu-toggle" onclick="toggleMenu()" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav id="navbar">
+      <a href="index.html">Home</a>
+      <a href="aboutme.html">About</a>
+      <a href="properties.html">Properties</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <section class="contact-section">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Have questions or want to schedule a visit? We'd love to hear from you!</p>
+      
+      <form action="https://formspree.io/f/xeozqeke" method="POST" class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="tel" name="phone" placeholder="Your Phone" />
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 DreamHomes. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navbar").classList.toggle("show");
+    }
+  </script>
+
+</body>
+</html>

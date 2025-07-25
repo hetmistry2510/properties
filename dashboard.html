@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - DreamHomes</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      background-color: #0652DD;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 24px;
+      color: white;
+      font-weight: bold;
+    }
+    .logo span {
+      color: #ffc107;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffc107;
+    }
+    
+
+    /* Welcome Section */
+    .dashboard .container {
+      text-align: center;
+      padding: 50px 20px 30px;
+      animation: fadeIn 1s ease;
+    }
+    .dashboard .container h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .dashboard .container p {
+      font-size: 16px;
+    }
+
+    .dashboard .container a.btn {
+      display: inline-block;
+      margin: 15px;
+      padding: 12px 24px;
+      background-color: #0652DD;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .dashboard .container a.btn:hover {
+      background-color: #003ea1;
+      transform: scale(1.05);
+    }
+
+    /* Properties Section */
+    .properties-preview {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .properties-preview h3 {
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+    .property-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .property-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      width: 280px;
+      transition: transform 0.3s ease;
+    }
+    .property-card:hover {
+      transform: translateY(-5px);
+    }
+    .property-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .property-card h4 {
+      margin: 10px 0 5px;
+    }
+    .property-card p {
+      font-size: 14px;
+      color: #555;
+    }
+    .property-card a {
+      display: inline-block;
+      margin: 10px;
+      padding: 8px 16px;
+      background-color: #0652DD;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    /* Stats Section */
+    .stats-box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .stat {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 160px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      animation: fadeInUp 1s ease;
+    }
+    .stat h2 {
+      color: #0652DD;
+      margin-bottom: 5px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #e0e0e0;
+      margin-top: 50px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        margin-top: 10px;
+        text-align: center;
+        width: 100%;
+      }
+      nav a {
+        display: inline-block;
+        margin: 10px;
+      }
+      .property-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      .stat {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">🏠 Dream<span>Homes</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="properties.html">Properties</a>
+      <a href="contect.html">Contact</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </nav>
+  </header>
+
+  <section class="dashboard">
+    <div class="container">
+      <h2>Welcome, <span id="userName">User</span>!</h2>
+      <p>Your registered email is <strong id="userEmail">example@mail.com</strong>.</p>
+
+      <h3 style="margin-top: 30px;">Quick Access</h3>
+      <a href="properties.html" class="btn">🔍 Explore Properties</a>
+      <a href="about.html" class="btn">📖 Learn About Us</a>
+      <a href="contect.html" class="btn">📬 Contact Us</a>
+    </div>
+  </section>
+
+  <section class="properties-preview">
+    <h3>Top Property Listings</h3>
+    <div class="property-grid">
+      <div class="property-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcz64bFTXD88eFDofV9ikk-wcTvVFhENhSGg&s" alt="House 1">
+        <h4>2BHK Apartment</h4>
+        <p>Mumbai • ₹80 Lakh</p>
+        <a href="properties.html">View</a>
+      </div>
+      <div class="property-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT26oaPJYONkGYw8cF-pUUM5PJgkANRN3xqEQ&s" alt="House 2">
+        <h4>3BHK Villa</h4>
+        <p>Bangalore • ₹1.2 Cr</p>
+        <a href="properties.html">View</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-box">
+    <div class="stat">
+      <h2>450+</h2>
+      <p>Properties</p>
+    </div>
+    <div class="stat">
+      <h2>250+</h2>
+      <p>Clients</p>
+    </div>
+    <div class="stat">
+      <h2>100+</h2>
+      <p>Agents</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 DreamHomes. All rights reserved.</p>
+  </footer>
+<script>
+  function handleLogin(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (storedUser && storedUser.email === email && storedUser.password === password) {
+      // ✅ This line is required!
+      localStorage.setItem("isLoggedIn", "true");
+
+      // Just to be safe, save user again
+      localStorage.setItem("user", JSON.stringify(storedUser));
+
+      window.location.href = "dashboard.html";
+    } else {
+      const errorMsg = document.getElementById("error");
+      errorMsg.style.display = "block";
+      setTimeout(() => {
+        errorMsg.style.display = "none";
+      }, 3000);
+    }
+  }
+</script>
+
+</body>
+</html>
