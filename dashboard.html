@@ -246,51 +246,33 @@
     <p>© 2025 DreamHomes. All rights reserved.</p>
   </footer>
 <script>
-  function handleLogin(event) {
-    event.preventDefault();
-
-    const email = document.getElementById("loginEmail").value.trim();
-    const password = document.getElementById("loginPassword").value;
-
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-
-    if (storedUser && storedUser.email === email && storedUser.password === password) {
-      // ✅ Mark user as logged in
-      localStorage.setItem("isLoggedIn", "true");
-
-      window.location.href = "dashboard.html";
-    } else {
-      const errorMsg = document.getElementById("error");
-      errorMsg.style.display = "block";
-      setTimeout(() => {
-        errorMsg.style.display = "none";
-      }, 3000);
-    }
-  }
-
-  // ✅ Add logout function
+  // ✅ Logout function
   function logout() {
-    // Remove login flag and user data if needed
+    // Remove login flag and user data
     localStorage.removeItem("isLoggedIn");
-    // Optionally also remove user data
-    // localStorage.removeItem("user");
+    localStorage.removeItem("user");
 
     // Redirect to login page
     window.location.href = "login.html";
   }
 
-  // ✅ On page load, show user details
+  // ✅ Run when page loads
   window.addEventListener("DOMContentLoaded", () => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser) {
-      document.getElementById("userName").innerText = storedUser.name;
-      document.getElementById("userEmail").innerText = storedUser.email;
-    } else {
-      // If no user is found, redirect to login
+
+    // If not logged in, redirect to login
+    if (!isLoggedIn || !storedUser) {
       window.location.href = "login.html";
+      return;
     }
+
+    // Show user details if logged in
+    document.getElementById("userName").innerText = storedUser.name;
+    document.getElementById("userEmail").innerText = storedUser.email;
   });
 </script>
+
 
 </body>
 </html>
